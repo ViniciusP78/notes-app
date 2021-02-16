@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { Container, Menu, Segment, Button, Input, Modal, Grid, Header, Card, Divider } from  'semantic-ui-react';
+import { Container, Menu, Segment, Button, Input, Modal, Grid, Header, Card, Divider, Icon } from  'semantic-ui-react';
 
 import Note from './components/Note';
+
+import Masonry from 'react-masonry-css';
 
 export interface INotesData {
   id: number
@@ -11,6 +13,8 @@ export interface INotesData {
 }
 
 const App = () => {
+
+
   return (
     <Container>
       <Menu>
@@ -18,7 +22,8 @@ const App = () => {
 
         <Menu.Item>
           <Button primary>
-            Add note
+          <Icon name='add' />
+            New note
           </Button>
 
         </Menu.Item>
@@ -30,33 +35,18 @@ const App = () => {
 
       <Grid>
         <Grid.Column width={8}>
-          <Card.Group itemsPerRow={2}>
-            <Card color='teal'>
-              <Card.Content>
-                <Card.Header>Title</Card.Header>
-                <Card.Meta>
-                  <span className='date'>Joined in 2015</span>
-                </Card.Meta>
-                <Card.Description>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </Card.Description>
-              </Card.Content>
-            </Card>
-            <Card>
-              <Card.Content>
-                <Card.Header>Title</Card.Header>
-                <Card.Meta>
-                  <span className='date'>Joined in 2015</span>
-                </Card.Meta>
-                <Card.Description>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </Card.Description>
-              </Card.Content>
-            </Card>
-          </Card.Group>
+        <Masonry
+          breakpointCols={2}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          <Note />
+          <Note />
+        </Masonry>
+
         </Grid.Column>
         <Grid.Column width={8}>
-          <Segment>
+          <Segment stacked>
             <Header as='h2' textAlign='center'>Welcome</Header>
             <Divider />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
