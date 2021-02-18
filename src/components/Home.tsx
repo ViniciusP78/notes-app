@@ -1,13 +1,67 @@
 import React from 'react';
 
-import {Segment, Header, Divider} from 'semantic-ui-react';
+import {Segment, Header, Divider, List} from 'semantic-ui-react';
 
 const Home = () => {
   return (
     <Segment stacked>
-      <Header as='h2' textAlign='center'>Welcome</Header>
+      <Header as='h2' textAlign='center'>Notes-app</Header>
       <Divider />
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Just a simple project to learn some of the React properties</p>
+
+      <Header as='h3'>
+        Tecnologies used:
+      </Header>
+
+      <List>
+        <List.Item>
+          <List.Header as='a' href='https://reactjs.org'>
+            React
+          </List.Header>
+          <List.Description>
+            Provides the basic rendering.
+          </List.Description>
+        </List.Item>
+
+        <List.Item>
+          <List.Header as='a' href='https://reactrouter.com'>
+            React Router
+          </List.Header>
+          <List.Description>
+            A library that provides routing for a react page.
+          </List.Description>
+        </List.Item>
+
+        <List.Item>
+          <List.Header as='a' href='https://react.semantic-ui.com'>
+            Semantic UI - React
+          </List.Header>
+          <List.Description>
+            A nice and clean ui framework tailored for react.
+          </List.Description>
+        </List.Item>
+
+        <List.Item>
+          <List.Header as='a' href='https://www.npmjs.com/package/uuid'>
+            Uuid
+          </List.Header>
+          <List.Description>
+            A library for generating unique Ids.
+          </List.Description>
+        </List.Item>
+
+        <List.Item>
+          <List.Header as='a' href='https://www.npmjs.com/package/masonry-layout'>
+            Masonry-Layout
+          </List.Header>
+          <List.Description>
+            A library for creating a cascade effect on elements.
+          </List.Description>
+        </List.Item>
+
+
+        
+      </List>
     </Segment>
   )
   
