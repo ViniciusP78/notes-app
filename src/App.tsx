@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, Menu, Segment, Button, Input, Modal, Grid, Header, Card, Divider, Icon } from  'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -10,36 +10,29 @@ import Home from './components/Home';
 import Masonry from 'react-masonry-css';
 
 export interface INote {
-  id: number
+  id: string,
   title: string,
   content: string
 }
 
 const App = () => {
 
-  const notesData:INote[] = [
-    {
-      id: 1,
-      title: 'Nota 1',
-      content: 'Lorem ipsum dolobore et dolore magna aliqua.'
-    },
-    {
-      id: 2,
-      title: 'Nota 2',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscinged do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      id: 3,
-      title: 'Nota 3',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      id: 4,
-      title: 'Nota 4',
-      content: 'Lorem ipsum dolor sit amet, consectedo eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
+  const [notesData, setNotesData] = useState<INote[]>([]);
 
-  ]
+  useEffect(() => {
+    let data = localStorage.getItem('notesData');
+    if (data) {
+      setNotesData(JSON.parse(data));
+    } else {
+      console.log('Empty Storage')
+    }
+  }, []);
+
+  const handleClearStorage = (): void => {
+    localStorage.clear();
+    setNotesData([]);
+  }
+
 
   return (
     <Container>
@@ -58,6 +51,12 @@ const App = () => {
 
             <Icon name='add' />
               New note
+            </Button>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Button basic negative onClick={handleClearStorage}>
+              Clear Storage
             </Button>
           </Menu.Item>
 
@@ -80,7 +79,7 @@ const App = () => {
           <Grid.Column width={8}>
             <Switch>
               <Route path='/new'>
-                <AddNote />
+                <AddNote updateNotesData={setNotesData} />
               </Route>
 
               <Route path='/'>
