@@ -29,7 +29,7 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
 
     updateNotesData(fusedData)
     
-    
+    setFormData({id:'',title:'',content:''});
     
     console.log(formData);
   }
@@ -57,8 +57,8 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
       <Header as='h2' textAlign='center'>New Note</Header>
       <Divider />
       <Form onSubmit={handleAddNote}>
-        <Form.Input label='Title' placeholder='Title' name='title' onChange={handleInputChange}  required/>
-        <Form.TextArea label='Content' placeholder='Content' style={{ minHeight: 400 }} name='content' onChange={handleTextAreaChange} required/>
+        <Form.Input label='Title' placeholder='Title' name='title' value={formData.title} onChange={handleInputChange}  required/>
+        <Form.TextArea label='Content' placeholder='Content' style={{ minHeight: 400 }} name='content' value={formData.content} onChange={handleTextAreaChange} required/>
         <Form.Button primary type='submit'>
           Create Note
         </Form.Button>
