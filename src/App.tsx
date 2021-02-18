@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Menu, Button, Input, Grid, Icon } from  'semantic-ui-react';
+import { Container, Menu, Button, Input, Grid, Icon, Message } from  'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Note from './components/Note';
@@ -80,6 +80,10 @@ const App = () => {
 
         <Grid>
           <Grid.Column width={8}>
+            {
+              (!notesData[0]) &&
+              <Message info>No notes added. Add a new note using the button above.</Message>
+            }
           <Masonry
             breakpointCols={2}
             className="my-masonry-grid"
