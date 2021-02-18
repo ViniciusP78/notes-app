@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent, } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import {Segment, Header, Divider, Form, Button} from 'semantic-ui-react';
+import {Segment, Header, Divider, Form} from 'semantic-ui-react';
 
 import {INote} from '../App';
 
@@ -37,20 +37,12 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
-    console.log(formData.title);
   }
 
   const handleTextAreaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
-    console.log(formData.content);
   }
-
-  // const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = event.target;
-  //   setFormData({ ...formData, [name]: value })
-  //   console.log(formData.title)
-  // }
 
   return (
     <Segment stacked>

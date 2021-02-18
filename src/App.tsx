@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Menu, Segment, Button, Input, Modal, Grid, Header, Card, Divider, Icon } from  'semantic-ui-react';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Container, Menu, Button, Input, Grid, Icon } from  'semantic-ui-react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Note from './components/Note';
 import AddNote from './components/AddNote';
@@ -20,7 +19,6 @@ export interface INote {
 const App = () => {
 
   const [notesData, setNotesData] = useState<INote[]>([]);
-  const [viewData, setViewData] = useState<INote>();
 
   useEffect(() => {
     let data = localStorage.getItem('notesData');
@@ -33,16 +31,15 @@ const App = () => {
 
   const handleClearStorage = (): void => {
     localStorage.clear();
+
     setNotesData([]);
   }
 
   const handleViewNote = (id: string): INote | null => {
-
     let viewNoteData = null;
 
     notesData.map(item => {
-      if (item.id == id) {
-        console.log(item);
+      if (item.id === id) {
         viewNoteData = item;
       }
     })
@@ -88,7 +85,7 @@ const App = () => {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {notesData.map(item => <Note note={item} handleViewNote={handleViewNote} />)}
+            {notesData.map(item => <Note key={item.id} {...item} />)}
           </Masonry>
 
           </Grid.Column>
@@ -114,10 +111,6 @@ const App = () => {
 
       </Router>
     </Container>
-
-    
-      
-
   );
 }
 
