@@ -12,12 +12,13 @@ interface IAddNote {
 
 const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
 
-  const [formData, setFormData] = useState<INote>({id:'',title:'',content:''});
+  const [formData, setFormData] = useState<INote>({id:uuidv4(),title:'',content:''});
 
   const handleAddNote = (event: FormEvent) => {
     event.preventDefault(); // impede que o browser atualize
 
-    setFormData({...formData, id:uuidv4()});
+    setFormData({...formData, id:uuidv4()}); // Adicionar o uuid aqui não funciona
+
     let data = localStorage.getItem('notesData');
 
     let fusedData:INote[] = [];
@@ -29,9 +30,8 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
 
     updateNotesData(fusedData)
     
-    setFormData({id:'',title:'',content:''});
+    setFormData({id:uuidv4(),title:'',content:''});
     
-    console.log(formData);
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
