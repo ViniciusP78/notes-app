@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/notes-app/static/css/main.70535574.chunk.css",
+    "main.js": "/notes-app/static/js/main.e14aa671.chunk.js",
+    "main.js.map": "/notes-app/static/js/main.e14aa671.chunk.js.map",
+    "runtime-main.js": "/notes-app/static/js/runtime-main.33c302f3.js",
+    "runtime-main.js.map": "/notes-app/static/js/runtime-main.33c302f3.js.map",
+    "static/css/2.da278560.chunk.css": "/notes-app/static/css/2.da278560.chunk.css",
+    "static/js/2.9a2820f4.chunk.js": "/notes-app/static/js/2.9a2820f4.chunk.js",
+    "static/js/2.9a2820f4.chunk.js.map": "/notes-app/static/js/2.9a2820f4.chunk.js.map",
+    "static/js/3.5f13da65.chunk.js": "/notes-app/static/js/3.5f13da65.chunk.js",
+    "static/js/3.5f13da65.chunk.js.map": "/notes-app/static/js/3.5f13da65.chunk.js.map",
+    "index.html": "/notes-app/index.html",
+    "static/css/2.da278560.chunk.css.map": "/notes-app/static/css/2.da278560.chunk.css.map",
+    "static/css/main.70535574.chunk.css.map": "/notes-app/static/css/main.70535574.chunk.css.map",
+    "static/js/2.9a2820f4.chunk.js.LICENSE.txt": "/notes-app/static/js/2.9a2820f4.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/notes-app/static/media/outline-icons.ddae9b1b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33c302f3.js",
+    "static/css/2.da278560.chunk.css",
+    "static/js/2.9a2820f4.chunk.js",
+    "static/css/main.70535574.chunk.css",
+    "static/js/main.e14aa671.chunk.js"
+  ]
+}
