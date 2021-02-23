@@ -15,6 +15,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-masonry-css": "^1.0.14",
+    "react-remark": "^2.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "semantic-ui-css": "^2.4.1",

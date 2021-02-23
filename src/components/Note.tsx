@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, Card } from  'semantic-ui-react';
+import { Button, Card, Icon } from  'semantic-ui-react';
 
 import {INote} from '../App';
 
@@ -14,7 +14,7 @@ const Note:React.FC<INote> = ({id, title, content}) => {
           <span className='date'>Joined in 2015</span>
         </Card.Meta>
         <Card.Description>
-          {content}
+          <Icon name='file text' />
         </Card.Description>
       </Card.Content>
       <Card.Content extra>

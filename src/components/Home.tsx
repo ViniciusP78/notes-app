@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import {Segment, Header, Divider, List} from 'semantic-ui-react';
+
+import { Remark } from 'react-remark';
 
 const Home = () => {
   return (
@@ -58,9 +60,6 @@ const Home = () => {
             A library for creating a cascade effect on elements.
           </List.Description>
         </List.Item>
-
-
-        
       </List>
     </Segment>
   )

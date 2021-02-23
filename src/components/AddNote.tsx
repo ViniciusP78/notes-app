@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent, } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import {Segment, Header, Divider, Form} from 'semantic-ui-react';
+import {Segment, Header, Divider, Form, Message, Icon} from 'semantic-ui-react';
 
 import {INote} from '../App';
 
@@ -45,6 +45,7 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
   }
 
   return (
+    <>
     <Segment stacked>
       <Header as='h2' textAlign='center'>New Note</Header>
       <Divider />
@@ -56,6 +57,11 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
         </Form.Button>
       </Form>
     </Segment>
+    <Message info>
+      <Icon name='info circle' />
+      We use <strong>Markdown</strong> for formatting. Click <a target='_blank' href='https://www.markdownguide.org/cheat-sheet/'>here</a> to learn more.
+    </Message>
+    </>
   )
   
 }

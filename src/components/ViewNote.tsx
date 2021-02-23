@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Remark } from 'react-remark';
 
 import { useParams } from 'react-router-dom';
 
@@ -35,7 +36,13 @@ const ViewNote:React.FC<IViewNote> = ({handleViewNote}) => {
     <Segment stacked>
       <Header as='h2' textAlign='center'>{(viewData)? viewData.title : "404"}</Header>
       <Divider />
-      <p>{viewData?.content}</p>
+      {
+        viewData &&
+        <Remark>
+          {viewData.content}
+        </Remark>
+      }
+      
     </Segment>
   )
   
