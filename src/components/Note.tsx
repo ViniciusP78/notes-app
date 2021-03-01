@@ -10,9 +10,9 @@ const Note:React.FC<INote> = ({id, title, content}) => {
     <List.Item as={Link} to={`/note/${id}`}>
       <Icon name='sticky note outline' />
       <List.Content>
-      <List.Header>
-        {title}
-      </List.Header>
+        <List.Header>
+          {title}
+        </List.Header>
       </List.Content>
       
     </List.Item>
