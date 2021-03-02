@@ -1,37 +1,22 @@
-import React, { useState, FormEvent, ChangeEvent, } from 'react';
+import React, { useState, FormEvent, ChangeEvent, useContext, } from 'react';
 
-import { v4 as uuidv4 } from 'uuid';
 
 import {Segment, Header, Divider, Form, Message, Icon} from 'semantic-ui-react';
 
-import {INote} from '../App';
+import { NotesContext } from '../contexts/NotesContext';
 
-interface IAddNote {
-  updateNotesData : (notesData : INote[]) => void
-}
 
-const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
+const AddNote = () => {
+  const {saveNote} = useContext(NotesContext);
 
-  const [formData, setFormData] = useState<INote>({id:uuidv4(),title:'',content:''});
+  const [formData, setFormData] = useState({title:'',content:''});
 
   const handleAddNote = (event: FormEvent) => {
     event.preventDefault(); // impede que o browser atualize
-
-    setFormData({...formData, id:uuidv4()}); // Adicionar o uuid aqui não funciona
-
-    let data = localStorage.getItem('notesData');
-
-    let fusedData:INote[] = [];
-
-    if (data) {fusedData = JSON.parse(data);}
-
-    fusedData.push(formData);
-    localStorage.setItem('notesData',JSON.stringify(fusedData));
-
-    updateNotesData(fusedData)
     
-    setFormData({id:uuidv4(),title:'',content:''});
+    saveNote(formData.title, formData.content)
     
+    setFormData({title:'',content:''});
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -46,21 +31,21 @@ const AddNote:React.FC<IAddNote> = ({updateNotesData}) => {
 
   return (
     <>
-    <Segment stacked>
-      <Header as='h2' textAlign='center'>New Note</Header>
-      <Divider />
-      <Form onSubmit={handleAddNote}>
-        <Form.Input label='Title' placeholder='Title' name='title' value={formData.title} onChange={handleInputChange}  required/>
-        <Form.TextArea label='Content' placeholder='Content' style={{ minHeight: 400 }} name='content' value={formData.content} onChange={handleTextAreaChange} required/>
-        <Form.Button primary type='submit'>
-          Create Note
-        </Form.Button>
-      </Form>
-    </Segment>
-    <Message info>
-      <Icon name='info circle' />
-      We use <strong>Markdown</strong> for formatting. Click <a target='_blank' href='https://www.markdownguide.org/cheat-sheet/'>here</a> to learn more.
-    </Message>
+      <Segment stacked>
+        <Header as='h2' textAlign='center'>New Note</Header>
+        <Divider />
+        <Form onSubmit={handleAddNote}>
+          <Form.Input label='Title' placeholder='Title' name='title' value={formData.title} onChange={handleInputChange}  required/>
+          <Form.TextArea label='Content' placeholder='Content' style={{ minHeight: 400 }} name='content' value={formData.content} onChange={handleTextAreaChange} required/>
+          <Form.Button primary type='submit'>
+            Create Note
+          </Form.Button>
+        </Form>
+      </Segment>
+      <Message info>
+        <Icon name='info circle' />
+        We use <strong>Markdown</strong> for formatting. Click <a target='_blank' rel="noreferrer" href='https://www.markdownguide.org/cheat-sheet/'>here</a> to learn more.
+      </Message>
     </>
   )
   

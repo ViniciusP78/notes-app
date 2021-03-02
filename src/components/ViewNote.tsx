@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Remark } from 'react-remark';
 
 import { useParams } from 'react-router-dom';
@@ -6,31 +6,29 @@ import { useParams } from 'react-router-dom';
 import {Segment, Header, Divider} from 'semantic-ui-react';
 
 import {INote} from '../App'
+import { NotesContext } from '../contexts/NotesContext';
 
 interface IParams {
   id : string
 }
 
-interface IViewNote {
-  handleViewNote: (id: string) => INote | null
-}
+const ViewNote = () => {
 
-const ViewNote:React.FC<IViewNote> = ({handleViewNote}) => {
+  const { notes } = useContext(NotesContext);
+
   const [ viewData , setViewData ] = useState<INote>();
 
 
   const { id } = useParams<IParams>();
-  console.log(id);
+  console.log(id)
   
-  useEffect(() => {
-    if (id) {
-      let data = handleViewNote(id);
-      console.log(data);
-      if (data) {
-        setViewData(data)
+  useEffect(() => { // This component re-renders 3 times. Need to fix this
+    notes.forEach(item => {
+      if (item.id === id) {
+        setViewData(item);
       }
-    }
-  }, [handleViewNote, id])
+    })
+  }, [notes, id])
 
   return (
     <Segment stacked>

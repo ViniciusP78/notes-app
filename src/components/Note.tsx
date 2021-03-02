@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, Card, Icon, List, Segment } from  'semantic-ui-react';
+import { Icon, List} from  'semantic-ui-react';
 
 import {INote} from '../App';
 
-const Note:React.FC<INote> = ({id, title, content}) => {
+const Note:React.FC<INote> = ({id, title}) => {
   return (
     <List.Item as={Link} to={`/note/${id}`}>
       <Icon name='sticky note outline' />

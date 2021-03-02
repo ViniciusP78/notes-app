@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 import { Container, Menu, Button, Input, Grid, Icon, Message, List } from  'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import AddNote from './components/AddNote';
 import Home from './components/Home';
 import ViewNote from './components/ViewNote';
 
-import Masonry from 'react-masonry-css';
+import { NotesContext } from './contexts/NotesContext';
 
 export interface INote {
   id: string,
@@ -18,34 +18,13 @@ export interface INote {
 
 const App = () => {
 
-  const [notesData, setNotesData] = useState<INote[]>([]);
-
-  useEffect(() => {
-    let data = localStorage.getItem('notesData');
-    if (data) {
-      setNotesData(JSON.parse(data));
-    } else {
-      console.log('Empty Storage')
-    }
-  }, []);
+  const {notes, clearNotes} = useContext(NotesContext);
 
   const handleClearStorage = (): void => {
     localStorage.clear();
 
-    setNotesData([]);
+    clearNotes();
   }
-
-  const handleViewNote = (id: string): INote | null => {
-    let viewNoteData = null;
-
-    notesData.map(item => {
-      if (item.id === id) {
-        viewNoteData = item;
-      }
-    })
-    return viewNoteData
-  }
-
 
   return (
     <Container>
@@ -81,7 +60,7 @@ const App = () => {
         <Grid>
           <Grid.Column width={8}>
             {
-              (!notesData[0]) &&
+              (!notes[0]) &&
               <Message info>No notes added. Add a new note using the button above.</Message>
             }
           {/* <Masonry
@@ -90,7 +69,7 @@ const App = () => {
             columnClassName="my-masonry-grid_column"
           > */}
           <List divided selection>
-            {notesData.map(item => <Note key={item.id} {...item} />)}
+            {notes.map(item => <Note key={item.id} {...item} />)}
           </List>
             
           {/* </Masonry> */}
@@ -99,11 +78,11 @@ const App = () => {
           <Grid.Column width={8}>
             <Switch>
               <Route path='/new'>
-                <AddNote updateNotesData={setNotesData} />
+                <AddNote/>
               </Route>
 
               <Route path={'/note/:id'} >
-                <ViewNote handleViewNote={handleViewNote}/>
+                <ViewNote/>
               </Route>
 
               <Route path='/'>

@@ -1,15 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import {Segment, Header, Divider, List} from 'semantic-ui-react';
 
-import { Remark } from 'react-remark';
 
 const Home = () => {
   return (
     <Segment stacked>
       <Header as='h2' textAlign='center'>Notes-app</Header>
       <Divider />
-      <p>Just a simple project to learn some of the React properties</p>
+      <p>Just a simple project to learn some of the React properties.</p>
 
       <Header as='h3'>
         Tecnologies used:
@@ -53,11 +52,11 @@ const Home = () => {
         </List.Item>
 
         <List.Item>
-          <List.Header as='a' href='https://www.npmjs.com/package/masonry-layout'>
-            Masonry-Layout
+          <List.Header as='a' href='https://github.com/remarkjs/react-remark'>
+            React-Remark
           </List.Header>
           <List.Description>
-            A library for creating a cascade effect on elements.
+            A react library to display markdown components.
           </List.Description>
         </List.Item>
       </List>

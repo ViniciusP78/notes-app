@@ -6,9 +6,13 @@ import reportWebVitals from './reportWebVitals';
 
 import 'semantic-ui-css/semantic.min.css'
 
+import {NotesProvider} from './contexts/NotesContext';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NotesProvider>
+      <App />
+    </NotesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
