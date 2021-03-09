@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,KACE,kCAAoC,CACpC,0BACF,CAEA,WACE,mBACF,CAEA,MACE,gBACF","file":"main.4de3c088.chunk.css","sourcesContent":["body {\n  background-color: #f7f7f7 !important;\n  padding-top:30px!important;\n}\n\n.container {\n  padding-bottom:50px;\n}\n\n.grid {\n  min-height: 700px;\n}"]}
