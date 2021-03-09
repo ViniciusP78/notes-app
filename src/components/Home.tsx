@@ -1,7 +1,6 @@
-import React from 'react';
+import React from 'react'; // Add insta preview of markdown // Add preview button
 
 import {Segment, Header, Divider, List} from 'semantic-ui-react';
-
 
 const Home = () => {
   return (

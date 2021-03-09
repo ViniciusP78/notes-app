@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { Container, Menu, Button, Input, Grid, Icon, Message, List } from  'semantic-ui-react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Note from './components/Note';
 import AddNote from './components/AddNote';
@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <Container>
-      <Router basename='notes-app'>
+      <Router>
         <Menu>
           <Menu.Item header>Notes-app</Menu.Item>
 
